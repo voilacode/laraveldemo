@@ -1,14 +1,5 @@
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Calculator Form</title>
-    <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet">
-  </head>
-  <body class="text-center">
- 
+
+ @include('layouts.head')
   <main class="form-signin w-100 m-auto">
     <form action="http://localhost/calc/result" method="get">
       <h1 class="h3 mb-3 fw-normal">Calculator</h1>
@@ -33,6 +24,5 @@
       <button class="w-100 btn btn-lg btn-primary" type="submit">Calculate</button>
      
     </form>
-  </main>  
-  </body>
-</html>
+  </main> 
+   @include('layouts.footer')

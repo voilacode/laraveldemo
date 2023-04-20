@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calculator\CalculatorController;
 use App\Http\Controllers\String\StringController;
+use App\Http\Controllers\CodeClear\CodeClearController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,8 +24,14 @@ Route::get('/calc', [CalculatorController::class, 'index']);
 Route::get('/calc/result', [CalculatorController::class, 'result']);
 
 // string process routes
-Route::get('/string/form', [StringController::class,'index']);
-Route::get('/string/result', [StringController::class,'result']);
+Route::get('/string/input', [StringController::class,'index'])->name('form');
+Route::get('/string/random', [StringController::class,'result'])->name('result');
+
+// Code Clear Routes
+Route::get("/codeclear",[CodeClearController::class,'index'])->name('index');
+Route::get("/codeclear/recent",[CodeClearController::class,'recent'])->name('recent');
+Route::get("/codeclear/page/{page}",[CodeClearController::class,'page'])->name('page');
+
 
 require __DIR__ . '/auth.php';
 
