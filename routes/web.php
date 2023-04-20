@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Calculator\CalculatorController;
+use App\Http\Controllers\String\StringController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +18,13 @@ use App\Http\Controllers\Calculator\CalculatorController;
 Route::get('/', function () { 
     return view('index'); 
 });
+// calcualtor routes
 Route::get('/calc', [CalculatorController::class, 'index']);
 Route::get('/calc/result', [CalculatorController::class, 'result']);
 
+// string process routes
+Route::get('/string/form', [StringController::class,'index']);
+Route::get('/string/result', [StringController::class,'result']);
 
 require __DIR__ . '/auth.php';
 
