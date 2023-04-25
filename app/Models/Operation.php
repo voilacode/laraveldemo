@@ -9,6 +9,7 @@ class Operation extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'a',
         'b',
