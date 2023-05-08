@@ -22,6 +22,7 @@ class OperationController extends Controller
     public function store()
     {
         $data = request()->all();
+        //business logic
         if ($data['operation'] == 'add')
             $result = $data['a'] + $data['b'];
         else if ($data['operation'] == 'subtract')
@@ -40,25 +41,50 @@ class OperationController extends Controller
         return redirect()->route('operation.index');
     }
 
-    public function show()
+    public function show($id)
     {
-        return view('calculator.operation.show');
+        $data = Operation::where('id', $id)->first();
+        return view('calculator.operation.show')->with('data', $data);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('calculator.operation.edit');
+        // load the data from database based on id
+        $data = Operation::where('id', $id)->first();
+        // show one form to edit the data
+        return view('calculator.operation.edit')->with('data', $data);
     }
 
-    public function update()
+    public function update($id)
     {
+        //pull the data form request
+        $data = request()->all();
+        $opr = Operation::where('id', $id)->first();
+        $opr->a = $data['a'];
+        $opr->b = $data['b'];
+        $opr->opr = $data['operation'];
+
+        //business logic
+        if ($data['operation'] == 'add')
+            $result = $data['a'] + $data['b'];
+        else if ($data['operation'] == 'subtract')
+            $result = $data['a'] - $data['b'];
+        else if ($data['operation'] == 'multiply')
+            $result = $data['a'] * $data['b'];
+
+        $opr->result = $result;
+        $opr->update();
+
         // update the data 
-        echo "we are in update method";
+        return redirect()->route('operation.index');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
+        $data = Operation::where('id', $id)->first();
+        $data->delete();
         // delete the data
-        echo "we are in delete method";
+        echo "Successfully deleted the id : " . $id;
+        echo "<a href='http://localhost/operation'>back to index page</a>";
     }
 }

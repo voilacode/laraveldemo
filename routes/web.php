@@ -25,13 +25,20 @@ Route::get('/calc', [CalculatorController::class, 'index']);
 Route::get('/calc/result', [CalculatorController::class, 'result']);
 
 // operation controller routes
+// index - to list all the data from database
 Route::get('/operation', [OperationController::class, 'index'])->name('operation.index');
+// its a form the collect the data
 Route::get('/operation/create', [OperationController::class, 'create'])->name('operation.create');
+// save the data from the form to database
 Route::get('/operation/store', [OperationController::class, 'store'])->name('operation.store');
-Route::get('/operation/show', [OperationController::class, 'show'])->name('operation.show');
-Route::get('/operation/edit', [OperationController::class, 'edit'])->name('operation.edit');
-Route::get('/operation/update', [OperationController::class, 'update'])->name('operation.update');
-Route::get('/operation/destroy', [OperationController::class, 'destroy'])->name('operation.destroy');
+// show one item from database
+Route::get('/operation/show/{id}', [OperationController::class, 'show'])->name('operation.show');
+// edit one item from database
+Route::get('/operation/edit/{id}', [OperationController::class, 'edit'])->name('operation.edit');
+// update one item from database
+Route::get('/operation/update/{id}', [OperationController::class, 'update'])->name('operation.update');
+// delete the item from database
+Route::get('/operation/destroy/{id}', [OperationController::class, 'destroy'])->name('operation.destroy');
 
 
 // string process routes

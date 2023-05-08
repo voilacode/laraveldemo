@@ -8,8 +8,7 @@
  		<th>b</th>
  		<th>opr</th>
  		<th>result</th>
- 		<th>created_at</th>
- 		<th>updated_at</th>
+ 		<th>tools</th>
  	</tr>
  	@foreach($all_data as $data)
  	<tr>
@@ -18,8 +17,19 @@
  		<td>{{ $data->b }}</td>
  		<td>{{ $data->opr }}</td>
  		<td>{{ $data->result }}</td>
- 		<td>{{ $data->created_at }}</td>
- 		<td>{{ $data->updated_at }}</td>
+ 		<td>
+ 			<a href="{{ route('operation.show',$data->id) }}">
+ 				<button class="btn btn-primary btn-sm">view</button>
+ 			</a>
+
+ 			<a href="{{ route('operation.edit',$data->id) }}">
+ 				<button class="btn btn-secondary btn-sm">edit</button>
+ 			</a>
+
+ 			<a href="{{ route('operation.destroy',$data->id) }}">
+ 				<button class="btn btn-danger btn-sm">delete</button>
+ 			</a>
+ 		</td>
  	</tr>
  	@endforeach
  </table>
