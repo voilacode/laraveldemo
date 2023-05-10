@@ -5,6 +5,7 @@ use App\Http\Controllers\Calculator\CalculatorController;
 use App\Http\Controllers\Calculator\OperationController;
 use App\Http\Controllers\String\StringController;
 use App\Http\Controllers\CodeClear\CodeClearController;
+use App\Http\Controllers\Electricity\BillController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,20 @@ Route::get('/string/random', [StringController::class, 'result'])->name('result'
 Route::get("/codeclear", [CodeClearController::class, 'index'])->name('index');
 Route::get("/codeclear/recent", [CodeClearController::class, 'recent'])->name('recent');
 Route::get("/codeclear/page/{page}", [CodeClearController::class, 'page'])->name('page');
+
+
+
+// Bill management application - CURD (Create,update,read, delete)
+Route::get('/bill', [BillController::class, 'index'])->name('bill.index');
+Route::get('/bill/create', [BillController::class, 'create'])->name('bill.create');
+Route::get('/bill/store', [BillController::class, 'store'])->name('bill.store');
+Route::get('/bill/show/{id}', [BillController::class, 'show'])->name('bill.show');
+Route::get('/bill/edit/{id}', [BillController::class, 'edit'])->name('bill.edit');
+Route::get('/bill/update/{id}', [BillController::class, 'update'])->name('bill.update');
+Route::get('/bill/delete/{id}', [BillController::class, 'destroy'])->name('bill.destroy');
+
+
+
 
 
 require __DIR__ . '/auth.php';
